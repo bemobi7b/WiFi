@@ -29,7 +29,7 @@ void loop()
     double temperature = (voltage - 0.5) * 100;
     int fahrenheit = temperature * 1.8 + 32;
     int temp = temperature;
-    display.clearDisplay();
+    // display.clearDisplay();
     display.println("Current temperature: \n");
     display.printf("%u C \n", temp);
     display.printf("%u F", fahrenheit);
