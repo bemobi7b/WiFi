@@ -4,16 +4,14 @@
 
 #include "Particle.h"
 #line 1 "c:/Users/Rich/CTD2023/WiFi/src/WiFi.ino"
-void setup();
-void loop();
-#line 1 "c:/Users/Rich/CTD2023/WiFi/src/WiFi.ino"
-#define BLYNK_TEMPLATE_ID "TMPL258xouvzs"
-#define BLYNK_TEMPLATE_NAME "Tempy"
-#define BLYNK_AUTH_TOKEN "dIwqCXzJrXgrhRlXiXRvgIPqdl5UTBJx"
+#include "env.h"
 
 #include <blynk.h>
 #include "oled-wing-adafruit.h"
 
+void setup();
+void loop();
+#line 6 "c:/Users/Rich/CTD2023/WiFi/src/WiFi.ino"
 #define TEMPINPUT A4
 
 OledWingAdafruit display;
