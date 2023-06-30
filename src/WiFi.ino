@@ -42,23 +42,24 @@ void loop()
     display.printf("%u C \n", temp);
     display.printf("%u F", fahrenheit);
     display.display();
-    Blynk.virtualWrite(VIRTUAL_TEMP_STATE, temp);
+    Blynk.virtualWrite(VIRTUAL_TEMP_STATE, fahrenheit);
     if (display.pressedA())
     {
         Serial.println("Press");
         Blynk.virtualWrite(VIRTUAL_NOTE, HIGH);
         Blynk.virtualWrite(VIRTUAL_BUTTON_PIN, HIGH);
         display.clearDisplay();
+        display.setCursor(0,0);
         display.println("Push Sent");
         display.display();
         Blynk.logEvent(NOTIFY_EVENT_CODE, HARDWARE_NOTIFY_MSG);
-        delay(5000);
+        delay(2000);
         Blynk.virtualWrite(VIRTUAL_BUTTON_PIN, LOW);
     }
     else
     {
-        // Blynk.virtualNote
-        delay(200);
+        Blynk.virtualWrite(VIRTUAL_NOTE, LOW);
+        // delay(200);
     }
 }
 BLYNK_WRITE(VIRTUAL_BUTTON_PIN)
