@@ -21,10 +21,10 @@ void setup()
     Blynk.begin(BLYNK_AUTH_TOKEN);
     display.setup();
     display.clearDisplay();
-    display.display();
     display.setTextColor(WHITE);
     display.setTextSize(1);
     display.setCursor(0, 0);
+    display.display();
     pinMode(TEMPINPUT, INPUT);
 }
 void loop()
@@ -37,6 +37,7 @@ void loop()
     int fahrenheit = temperature * 1.8 + 32;
     int temp = temperature;
     display.clearDisplay();
+    display.setCursor(0, 0);
     display.println("Current temperature: \n");
     display.printf("%u C \n", temp);
     display.printf("%u F", fahrenheit);
@@ -52,6 +53,12 @@ void loop()
         display.display();
         Blynk.logEvent(NOTIFY_EVENT_CODE, HARDWARE_NOTIFY_MSG);
         delay(5000);
+        Blynk.virtualWrite(VIRTUAL_BUTTON_PIN, LOW);
+    }
+    else
+    {
+        // Blynk.virtualNote
+        delay(200);
     }
 }
 BLYNK_WRITE(VIRTUAL_BUTTON_PIN)
